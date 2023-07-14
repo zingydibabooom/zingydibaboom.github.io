@@ -1,8 +1,40 @@
-const express = require("express"); 
-const path = require("path");
-const PORT = 8000;
-var app = express(); app.use(express.static(path.join(__dirname, "./assets")));
-app.get("/", function (req, res, next) { res.sendFile(path.join(__dirname, "/index.html"));
-});
-app.listen( PORT, () => {
-console.log( "App running on http://localhost:" + PORT ); } );
+const tooltips = document.querySelectorAll('.all-tooltips .tooltip');
+const fullDiv = document.querySelector('section');
+const container = document.querySelector('.container');
+let timeoutId;
+
+window.addEventListener('DOMContentLoaded', contentPosition);
+window.addEventListener('resize', contentPosition);
+
+function contentPosition() {
+    tooltips.forEach(tooltip => {
+        const pin = tooltip.querySelector('.pin');
+        const content = tooltip.querySelector('.tooltip-content');
+        content.style.left = pin.offsetLeft - content.offsetWidth / 2 + 'px';
+        content.style.top = pin.offsetTop + 40 + 'px';
+    })
+}
+
+tooltips.forEach(tooltip => {
+    const pin = tooltip.querySelector('.pin');
+    const content = tooltip.querySelector('.tooltip-content');
+    pin.addEventListener('mousemove', () => {
+        tooltip.classList.add('active');
+    })
+    pin.addEventListener('mouseleave', () => {
+        timeoutId = setTimeout(() => {
+            tooltip.classList.remove('active');
+        }, 1000)
+    })
+    content.addEventListener('mousemove', () => {
+        clearTimeout(timeoutId);
+        tooltip.classList.add('active');
+    })
+    content.addEventListener('mouseleave', () => {
+        timeoutId = setTimeout(() => {
+            tooltip.classList.remove('active');
+        }, 1000)
+    })
+})
+
+contentPosition();

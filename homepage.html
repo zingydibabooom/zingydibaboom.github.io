@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="./stylesheet.css">
+
 </head>
+
 <body>
-    <div class="upper"></div>
-    <div class="bottom">
-        <div class="column">
-        <div style="position: relative; padding-bottom: 152%; padding-top: 0; height:auto;">
-            <iframe  src="https://interactive-img.com/view?id=52734&iframe=true"></iframe>
+    <section>
+        <div class="container">
+            <img src="./pictures/homepage.png" alt="homepage" usemap="#type-letters">
+            <map name="type-letters">
+                <area shape="circle" coords="417,866,20" alt="a" title="artwork" onmouseover="toolTip(this)"
+                    onmouseout="toolTipHide(this)" class="tooltip" href="artworks_btn">
+                <area shape="circle" coords="514,907,20" alt="c" href="./contactme.html">
+                <area shape="circle" coords="787,827,20" alt="p" href="./projects.html">
+                <area shape="circle" coords="694,905,20" alt="m" href="./aboutme.html">
+            </map>
+            <div class="all_tooltips">
+                <div class="tooltip tooltip_a">
+                    <div class="pin">
+                        <div class="tooltip-content">
+                            <div class="content">
+                                <h3>A for Artwork</h3>
+                                <p>Hello</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
+    </section>
+    <script src="./app.js"></script>
 </body>
 </html>
